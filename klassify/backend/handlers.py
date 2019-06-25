@@ -173,7 +173,7 @@ class StatsHandler(BaseHandler):
 
         self.response({
             'labels': len(labels),
-            'classifications': int(classification or 0),
+            #'classifications': int(classification or 0),
             'words': len(words)
         })
 
