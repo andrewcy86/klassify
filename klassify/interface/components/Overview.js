@@ -106,12 +106,6 @@ export default class Overview extends Component {
             </div>
 
             <div className={styles.total}
-                 ref={(ref) => this.classificationsRef = ref}>
-              <span className={styles.value}>{stats.data.classifications}</span>
-              <span className={styles.totalTitle}>classifications</span>
-            </div>
-
-            <div className={styles.total}
                  ref={(ref) => this.wordsRef = ref}>
               <span className={styles.value}>{stats.data.words}</span>
               <span className={styles.totalTitle}>words</span>
