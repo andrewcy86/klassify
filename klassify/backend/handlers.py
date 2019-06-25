@@ -172,9 +172,9 @@ class StatsHandler(BaseHandler):
             words |= set(keys)
 
         self.response({
-            'labels': len(labels),
+            #'labels': len(labels),
             #'classifications': int(classification or 0),
-            'words': len(words)
+            #'words': len(words)
         })
 
 
