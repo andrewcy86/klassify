@@ -36,7 +36,7 @@ class Klassify(Application):
         return [
             (r'/train', TrainerHandler),
             (r'/classify', ClassifierHandler),
-            (r'/stats', StatsHandler),
+            #(r'/stats', StatsHandler),
             (r'/words/(?P<label>[\w-]+)', WordsHandler),
             (r'/labels', LabelsHandler),
             (r'/', InterfaceHandler),
