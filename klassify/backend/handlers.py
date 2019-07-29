@@ -107,11 +107,8 @@ class ClassifierHandler(BaseHandler):
                 self.build_key('label', label)
             )
             
-           ##if isinstance(counts, int) == True: 
                 total = sum(map(int, counts))
-            ##else:
-                ##continue
-                
+
             if not total:
                 continue
 
