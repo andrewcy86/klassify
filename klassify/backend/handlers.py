@@ -106,9 +106,12 @@ class ClassifierHandler(BaseHandler):
                 store.hvals,
                 self.build_key('label', label)
             )
-
-            total = sum(map(int, counts))
-
+            
+            if counts.isdigit() == True: 
+                total = sum(map(int, counts))
+            else:
+                continue
+                
             if not total:
                 continue
 
