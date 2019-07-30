@@ -106,8 +106,8 @@ class ClassifierHandler(BaseHandler):
                 store.hvals,
                 self.build_key('label', label)
             )
-            
-                total = sum(map(int, counts))
+
+            total = sum(map(int, counts))
 
             if not total:
                 continue
