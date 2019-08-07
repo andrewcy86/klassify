@@ -106,9 +106,10 @@ class ClassifierHandler(BaseHandler):
                 store.hvals,
                 self.build_key('label', label)
             )
-
-            total = sum(map(int, counts))
-
+            try:
+                total = sum(map(int, counts))
+            except:
+                print('Exception has occurred')
             if not total:
                 continue
 
