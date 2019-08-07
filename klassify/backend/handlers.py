@@ -109,6 +109,7 @@ class ClassifierHandler(BaseHandler):
             try:
                 total = sum(map(int, counts))
             except:
+                total = 0
                 raise HTTPError(400, reason='Issue with total.')
                 continue
             if not total:
