@@ -226,7 +226,7 @@ class StatsWSHandler(WebSocketHandler):
     def __init__(self, *args, **kwargs):
         super(StatsWSHandler, self).__init__(*args, **kwargs)
 
-        c = tornadoredis.Client(
+        self.client = tornadoredis.Client(
             connection_pool=CONNECTION_POOL,
             host=self.application.options.redis_host,
             port=self.application.options.redis_port,
@@ -237,8 +237,8 @@ class StatsWSHandler(WebSocketHandler):
 
     @coroutine
     def listen(self):
-      
-        c.connect()
+        client = self.clent
+        client.connect()
 
         yield Task(
             client.subscribe,
