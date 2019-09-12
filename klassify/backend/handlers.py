@@ -227,8 +227,8 @@ class StatsWSHandler(WebSocketHandler):
 
         self.client = Client(
             connection_pool=CONNECTION_POOL,
-            self.application.options.redis_host,
-            self.application.options.redis_port,
+            host=self.application.options.redis_host,
+            port=self.application.options.redis_port,
             selected_db=self.application.options.redis_db
         )
 
