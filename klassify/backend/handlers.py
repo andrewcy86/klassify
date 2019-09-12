@@ -2,7 +2,6 @@ import collections
 from itertools import *
 import json
 import math
-import tornadoredis
 from tornado.gen import Task, coroutine
 from tornado.web import RequestHandler, HTTPError
 from tornado.websocket import WebSocketHandler
@@ -10,9 +9,6 @@ from tornadoredis import Client
 from .tokenizer import tokenize
 
 Infinity = float('inf')
-
-CONNECTION_POOL = tornadoredis.ConnectionPool(max_connections=10,
-                                              wait_for_available=True)
 
 class BaseHandler(RequestHandler):
     def write_error(self, status_code, **kwargs):
@@ -226,10 +222,9 @@ class StatsWSHandler(WebSocketHandler):
     def __init__(self, *args, **kwargs):
         super(StatsWSHandler, self).__init__(*args, **kwargs)
 
-        self.client = tornadoredis.Client(
-            connection_pool=CONNECTION_POOL,
-            host=self.application.options.redis_host,
-            port=self.application.options.redis_port,
+        self.client = Client(
+            self.application.options.redis_host,
+            self.application.options.redis_port,
             selected_db=self.application.options.redis_db
         )
 
@@ -238,6 +233,7 @@ class StatsWSHandler(WebSocketHandler):
     @coroutine
     def listen(self):
         client = self.client
+
         client.connect()
 
         yield Task(
