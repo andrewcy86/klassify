@@ -226,7 +226,7 @@ class StatsWSHandler(WebSocketHandler):
     def __init__(self, *args, **kwargs):
         super(StatsWSHandler, self).__init__(*args, **kwargs)
 
-        self.client = Client(
+        tornadoredis.client = Client(
             connection_pool=CONNECTION_POOL,
             host=self.application.options.redis_host,
             port=self.application.options.redis_port,
@@ -237,7 +237,7 @@ class StatsWSHandler(WebSocketHandler):
 
     @coroutine
     def listen(self):
-        client = self.client
+        client = tornadoredis.client
 
         client.connect()
 
