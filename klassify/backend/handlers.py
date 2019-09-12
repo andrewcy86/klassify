@@ -2,6 +2,7 @@ import collections
 from itertools import *
 import json
 import math
+import tornadoredis
 from tornado.gen import Task, coroutine
 from tornado.web import RequestHandler, HTTPError
 from tornado.websocket import WebSocketHandler
@@ -10,7 +11,7 @@ from .tokenizer import tokenize
 
 Infinity = float('inf')
 
-CONNECTION_POOL = self.ConnectionPool(max_connections=10,
+CONNECTION_POOL = tornadoredis.ConnectionPool(max_connections=10,
                                               wait_for_available=True)
 
 class BaseHandler(RequestHandler):
