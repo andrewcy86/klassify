@@ -10,6 +10,8 @@ from .tokenizer import tokenize
 
 Infinity = float('inf')
 
+CONNECTION_POOL = tornadoredis.ConnectionPool(max_connections=10,
+                                              wait_for_available=True)
 
 class BaseHandler(RequestHandler):
     def write_error(self, status_code, **kwargs):
@@ -224,6 +226,7 @@ class StatsWSHandler(WebSocketHandler):
         super(StatsWSHandler, self).__init__(*args, **kwargs)
 
         self.client = Client(
+            connection_pool=CONNECTION_POOL,
             self.application.options.redis_host,
             self.application.options.redis_port,
             selected_db=self.application.options.redis_db
