@@ -10,7 +10,7 @@ from .tokenizer import tokenize
 
 Infinity = float('inf')
 
-CONNECTION_POOL = tornadoredis.ConnectionPool(max_connections=10,
+CONNECTION_POOL = self.ConnectionPool(max_connections=10,
                                               wait_for_available=True)
 
 class BaseHandler(RequestHandler):
