@@ -237,7 +237,7 @@ class StatsWSHandler(WebSocketHandler):
 
     @coroutine
     def listen(self):
-        client = self.clent
+        client = self.client
         client.connect()
 
         yield Task(
